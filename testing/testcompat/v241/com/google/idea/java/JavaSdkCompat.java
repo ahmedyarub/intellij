@@ -17,6 +17,8 @@ package com.google.idea.java;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.projectRoots.impl.ProjectJdkImpl;
+import com.intellij.openapi.projectRoots.impl.UnknownSdkType;
 import com.intellij.pom.java.LanguageLevel;
 import com.intellij.testFramework.IdeaTestUtil;
 
@@ -37,8 +39,8 @@ public final class JavaSdkCompat {
     return jdk;
   }
 
-  /** #api233 to remove */
+  /** #api233 to inline */
   public static Sdk getNonJavaMockSdk() {
-    throw new RuntimeException("Not supported in 2024.1 or newer");
+    return new ProjectJdkImpl("", UnknownSdkType.getInstance(""), "", "");
   }
 }
